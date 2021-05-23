@@ -1,0 +1,9 @@
+[ 내가 만든 클래스 api로 추가하기]
+
+export > java > jar file 경로선택해서 finish
+
+window > preference > Java > Bulid Path > User Libraries
+New 로 새로운 라이브러리 폴더 만들기
+
+프로젝트이름 > 마우스 우클릭 > Build Path > Add Library 
+> User Library 클릭해서 자신의 라이브러리 선택.

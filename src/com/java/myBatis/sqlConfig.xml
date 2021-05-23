@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <dataSource type="UNPOOLED">	<!-- 매번 요청에 대해 커넥션을 열고 닫는 간단한 DataSource 이다. POOLED는 새로운 Connection 인스턴스를 생성하기 위해 매번 초기화하는 것을 피하게 해준다. -->
+        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>  <!-- web.xml -->
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/> <!-- database의 ConnectionProvider -->
+        <property name="username" value="mvc"/>		<!-- 접속한 DB 이름과 비밀번호 -->
+        <!-- property name="username" value="hr"/-->
+        <property name="password" value="1234"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <mapper resource="/com/java/member/model/mapper/memberMapper.xml"/>	<!-- sql문이 Mapping된 파일의 경로 -->
+    <mapper resource="/com/java/board/model/mapper/boardMapper.xml"/>
+    <!-- mapper resource="/com/java/fileBoard/model/mapper/fileBoardMapper.xml"/-->
+    <mapper resource="/com/java/sawon/model/mapper/sawonMapper.xml"/>
+    <mapper resource="/com/java/reply/model/mapper/replyMapper.xml"/>
+  </mappers>
+</configuration>

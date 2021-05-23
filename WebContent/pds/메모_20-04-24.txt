@@ -1,0 +1,43 @@
+[자바]
+
+https://www.oracle.com/java/technologies/
+
+java se > java se 14 > oracle jdk 의 jdk download
+
+Windows x64 Installer
+
+다운로드 C Program file 에 설치한다.
+
+
+[환경변수 설정]
+
+시스템변수에 새로 만들기 JAVA_HOME 이름. 값은 bin 파일 경로
+
+path 선택 편집 > 새로만들기 > %JAVA_HOME%\bin 추가 > 맨 위로 올리기 (다른거 절대 삭제하면 안된다,,,)
+
+cmd 에서 javac 명령이 제대로 나오는지 확인.
+
+
+
+
+[이클립스]
+
+https://www.eclipse.org/ download 선택
+
+최신버전 다운
+
+
+Eclipse IDE for Enterprise Java Developers 선택
+
+C areum java 폴더 선택해서 설치
+
+workspace 설정.
+
+
+web close 
+java 선택 open
+
+create a java project
+pro01 생성,, 모듈생성 x
+
+

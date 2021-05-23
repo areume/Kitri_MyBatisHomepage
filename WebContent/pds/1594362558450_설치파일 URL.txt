@@ -1,0 +1,40 @@
+1. 오라클 설치
+	https://www.oracle.com/database/technologies/xe-prior-releases.html
+
+2. SQL Developer
+	https://www.oracle.com/tools/downloads/sqldev-downloads.html
+
+3. 오라클 API 도움말
+	https://docs.oracle.com/cd/E11882_01/server.112/e41084/toc.htm
+
+4. eXERD 다운로드
+	http://ko.exerd.com/down.jsp
+
+5. java 다운로드
+	https://www.oracle.com/java/technologies/
+
+6. eclipse 다운로드
+	https://www.eclipse.org/
+
+7. star UML 다운로드
+	최신 버전은 프로젝트할 때 사용하기
+	http://staruml.io/
+	구 버전 다운로드 받기
+	https://sourceforge.net/projects/staruml/
+
+8. tomcat
+	http://tomcat.apache.org/
+
+9. HTML API
+	www.w3schools.com
+
+10. Java EE API
+	https://javaee.github.io/javaee-spec/javadocs/
+
+11. JSTL 다운로드
+	http://tomcat.apache.org/taglibs/
+	
+
+# 공유폴더 주소
+	\\192.168.0.133
+

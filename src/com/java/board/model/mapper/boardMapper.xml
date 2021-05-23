@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.java.board.model.mapper.boardMapper">					 <!-- mapper가 위치하고 있는 경로를 작성 -->
+	
+	<resultMap type="com.java.board.model.BoardDTO" id="baordDTO">
+		<result column="board_number" property="boardNumber"/>
+		<result column="writer" property="writer"/>
+		<result column="subject" property="subject"/>
+		<result column="email" property="email"/>
+		<result column="content" property="content"/>
+		<result column="password" property="password"/>
+		<result column="write_date" property="writeDate"/>
+		<result column="read_count" property="readCnt"/>
+		<result column="group_number" property="groupNumber"/>		
+		<result column="sequence_number" property="sequenceNumber"/>
+		<result column="sequence_level" property="sequenceLevel"/>
+	</resultMap>
+	
+	<select id="board_group_number_max" resultType="int">
+		select nvl(max(group_number),0) from board
+	</select>
+	
+	<select id="board_count" resultType="int">
+		select count(*) from board
+	</select>
+	
+	<!-- <![CDATA[]]> : 쿼리문의 특수문자를 xml 코드로 인식하지 않도록 한다. -->
+	<select id="board_list" parameterType="java.util.HashMap" resultMap="baordDTO">
+		<![CDATA[
+		select * from 
+		(select rownum as rnum, a.* from 
+			(select * from board order by group_number desc, sequence_number asc) a) b
+		where b.rnum>=#{startRow} and b.rnum<=#{endRow}]]>
+	</select>
+	
+	<select id="board_read" parameterType="int" resultMap="baordDTO">
+		<![CDATA[
+		select * from board where board_number=#{boardNumber}
+		]]>
+	</select>
+	
+	<insert id="board_insert" parameterType="com.java.board.model.BoardDTO">
+		insert into board (
+		board_number,
+		writer,
+		subject,
+		email,
+		content,
+		password,
+		write_date,
+		read_count,
+		group_number,
+		sequence_number,
+		sequence_level) values (
+		board_board_number_seq.nextval,
+		#{writer},
+		#{subject},
+		#{email},
+		#{content},
+		#{password},
+		#{writeDate},
+		#{readCnt},
+		#{groupNumber},
+		#{sequenceNumber},
+		#{sequenceLevel} )
+	</insert>
+	
+	<update id="board_sequence_update" parameterType="com.java.board.model.BoardDTO">
+		<![CDATA[
+		update board set 
+		sequence_number=sequence_number+1 
+		where group_number=#{groupNumber} and sequence_number>#{sequenceNumber}
+		]]>
+	</update>
+	
+	<update id="board_read_count_update" parameterType="int">
+		<![CDATA[
+		update board set read_count=read_count+1 where board_number=#{boardNumber}
+		]]>
+	</update>
+	
+	<update id="board_update" parameterType="com.java.board.model.BoardDTO">
+		<![CDATA[
+		update board set 
+		writer=#{writer}, 
+		subject=#{subject}, 
+		email=#{email}, 
+		content=#{content}, 
+		password=#{password} 
+		where board_number=#{boardNumber}
+		]]>
+	</update>
+	
+	<delete id="board_delete">
+		<![CDATA[
+		delete from board where board_number=to_number(#{boardNumber}) and password=#{password}
+		]]>
+	</delete>
+	
+</mapper>
